@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#244b3b">
+<meta name="description" content="Un espacio tranquilo para respirar, distraerte y recordar que mereces cuidado.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<title>aquíestaréminiña💖</title>
+<style>
+:root{--forest:#244b3b;--sage:#dce9d8;--mint:#edf4e9;--cream:#fbfaf3;--ink:#26382e;--muted:#66766a;--pink:#f4dce2;--line:#dfe8db}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#f8f8ef,#e6efe4);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+header{padding:24px 20px 18px;background:linear-gradient(135deg,#244b3b,#50765a);color:#fff;border-radius:0 0 28px 28px}
+.brand{font-family:Georgia,serif;font-size:clamp(24px,6vw,34px);line-height:1.15;margin:8px 0}.sub{opacity:.9;font-size:14px}.leaf{font-size:26px}
+main{max-width:720px;margin:auto;padding:18px 15px 40px}.quote{background:#fffaf1;border:1px solid #eee6d8;border-radius:20px;padding:18px;margin-bottom:16px;font-family:Georgia,serif;font-size:18px;line-height:1.5}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.tab,button{border:0;border-radius:14px;padding:12px 10px;font:inherit;cursor:pointer}.tab{background:#e1eadc;color:var(--forest);font-weight:650}.tab.active,button.primary{background:var(--forest);color:white}.panel{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 6px 24px #29482b0a}.panel h2{font-size:20px;margin:0 0 8px}.muted{color:var(--muted);font-size:14px;line-height:1.5}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.actions button,.full{width:100%}button{background:var(--sage);color:var(--forest);font-weight:650}.small{font-size:13px;padding:9px}.hidden{display:none!important}.breath{width:150px;height:150px;margin:18px auto;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#f9fff5,#a8c9a6);box-shadow:0 0 0 12px #e5efe0;animation:breathe 10s ease-in-out infinite;font-weight:700;color:var(--forest)}@keyframes breathe{0%,100%{transform:scale(.82)}50%{transform:scale(1.08)}}textarea,input,select{width:100%;padding:12px;border:1px solid #cbd9c8;border-radius:12px;background:#fff;font:inherit;color:var(--ink);margin:6px 0 12px}textarea{min-height:90px;resize:vertical}.activity{padding:13px;border-radius:15px;background:#f1f6ed;margin:9px 0}.activity strong{display:block;margin-bottom:5px}.status{padding:10px 12px;background:#f8e9ee;border-radius:12px;margin:10px 0;font-size:14px}.entry{border-top:1px solid var(--line);padding:10px 0}.footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 12px 28px}.check{display:flex;align-items:center;gap:10px}.check input{width:auto;margin:0}
+</style>
+</head>
+<body>
+<header><div class="leaf">🌿 🌼</div><div class="brand">aquíestaréminiña💖</div><div class="sub">Un pequeño lugar para respirar, sentir y volver a ti.</div></header>
+<main>
+<div class="quote" id="dailyQuote">“No tienes que resolverlo todo ahora. Vamos paso a paso.” 💚</div>
+<div class="tabs">
+<button class="tab active" data-tab="inicio">🌱 Inicio</button>
+<button class="tab" data-tab="retos">🧩 Retos</button>
+<button class="tab" data-tab="diario">📝 Diario</button>
+</div>
+<section id="inicio" class="panel">
+<h2>Hola, bonita 💗</h2><p class="muted">Si hoy tienes ganas de fumar, no te regañes. Haz una pausa y elige una cosa pequeña que te ayude a pasar este momento. No tienes que hacerlo perfecto.</p>
+<div class="status" id="urgePrompt">¿Te están dando ganas ahora? Prueba una actividad durante unos minutos y vuelve a revisar cómo te sientes.</div>
+<div class="actions">
+<button class="primary" onclick="showTab('respira')">🌬️ Respirar</button>
+<button onclick="showTab('retos')">🧩 Distraerme</button>
+<button onclick="showTab('mensajes')">💌 Leer un mensaje</button>
+<button onclick="showTab('musica')">🎵 Sonidos tranquilos</button>
+</div>
+</section>
+<section id="respira" class="panel hidden">
+<h2>Respira conmigo 🌬️</h2><p class="muted">Respira suavemente, sin forzar. Si te mareas, vuelve a respirar con normalidad.</p>
+<div class="breath" id="breathCircle">Inhala<br>suavemente</div>
+<p class="muted" style="text-align:center" id="breathText">Inhala suave… después exhala despacio.</p>
+<button class="primary full" onclick="toggleBreath()" id="breathBtn">Empezar / pausar</button>
+<button class="full" style="margin-top:8px" onclick="showTab('inicio')">Volver</button>
+</section>
+<section id="retos" class="panel hidden">
+<h2>Un reto pequeño 🧩</h2><p class="muted">Elige solo uno. No es una prueba: es una oportunidad para cambiar de actividad.</p>
+<div class="activity"><strong>🌿 Reto de los sentidos</strong>Encuentra 5 cosas que ves, 4 que sientes con el tacto, 3 que oyes, 2 que hueles y 1 cosa amable que puedas decirte.</div>
+<div class="activity"><strong>💧 Pausa de agua</strong>Bebe un poco de agua, cambia de lugar y estira suavemente los hombros.</div>
+<div class="activity"><strong>🎨 Mini reto creativo</strong>Dibuja una flor, fotografía algo verde o escribe tres cosas que te gustaría hacer esta semana.</div>
+<div class="activity"><strong>⏳ Deja pasar el momento</strong>Pon un temporizador de 5 minutos en tu teléfono y haz una actividad que mantenga tus manos ocupadas.</div>
+<div class="activity"><strong>💭 Ponle nombre a la emoción</strong>Completa: “Ahora mismo me siento ___ y creo que necesito ___”.</div>
+<button class="primary full" onclick="markTry()">Ya intenté un reto ✓</button>
+<p class="muted" id="tryCount">Pequeños pasos intentados: 0</p>
+</section>
+<section id="mensajes" class="panel hidden">
+<h2>Un mensaje para ti 💌</h2><div class="quote" id="loveMessage">Estoy orgulloso de que estés intentando cuidarte. No tienes que hacerlo todo de golpe. 💖</div>
+<button class="primary full" onclick="nextMessage()">Otro mensajito 🌷</button>
+<p class="muted">Puedes editar estos mensajes para poner palabras tuyas.</p>
+<textarea id="customMessage" placeholder="Escribe aquí un mensaje tuyo…"></textarea>
+<button class="full" onclick="saveMessage()">Guardar mi mensaje</button>
+<div class="status" id="savedMessageStatus">Tu mensaje personalizado se guarda en este dispositivo.</div>
+</section>
+<section id="diario" class="panel hidden">
+<h2>¿Cómo te sientes? 🌱</h2><p class="muted">Este diario se guarda en este dispositivo. Es privado para quien tenga acceso al teléfono; no escribas datos que no quieras guardar aquí.</p>
+<label for="mood">Mi estado de ánimo</label><select id="mood"><option>Tranquila</option><option>Normal</option><option>Ansiosa</option><option>Triste</option><option>Enojada</option><option>Con ganas de fumar</option><option>Orgullosa de mí</option></select>
+<label for="note">Quiero contarme algo…</label><textarea id="note" placeholder="¿Qué pasó? ¿Qué podría ayudarme ahora?"></textarea>
+<button class="primary full" onclick="saveEntry()">Guardar entrada</button><div id="entries"></div>
+</section>
+<section id="musica" class="panel hidden">
+<h2>Sonidos para bajar el ritmo 🎵</h2><p class="muted">Este generador crea un tono suave en tu dispositivo; no reproduce canciones comerciales. Puedes detenerlo cuando quieras.</p>
+<label for="soundType">Sonido</label><select id="soundType"><option value="rain">Lluvia suave (ruido relajante)</option><option value="tone">Tono tranquilo</option></select>
+<button class="primary full" id="soundBtn" onclick="toggleSound()">▶ Reproducir sonido</button><p class="muted" id="soundStatus">El sonido empieza solo cuando tú lo activas.</p>
+</section>
+<section class="panel">
+<h2>Recuerda 💚</h2><p class="muted">Un impulso no define quién eres. Si vuelves a fumar, no significa que hayas fracasado. Puedes intentarlo otra vez y pedir apoyo a una persona de confianza o a un profesional de salud.</p>
+</section>
+</main>
+<div class="footer">Hecha con cariño para acompañarte, no para juzgarte. 🌿<br>Los datos del diario se guardan localmente en este dispositivo.</div>
+<script>
+const quotes=["“No tienes que resolverlo todo ahora. Vamos paso a paso.” 💚","“Este momento va a cambiar. Trátate con cariño mientras pasa.” 🌿","“Pedir apoyo también es una forma de valentía.” 🌼","“No necesitas ser perfecta para merecer cuidado.” 💗"];
+const messages=["Estoy orgulloso de que estés intentando cuidarte. No tienes que hacerlo todo de golpe. 💖","Respira, mi niña. Este momento no dura para siempre. Te mereces paciencia y cariño. 🌷","Si hoy se siente difícil, ve poquito a poquito. No tienes que poder con todo sola. 💚","Recuerda que vales muchísimo, incluso en los días en que no te sientes bien. 🫶","Aquí estaré para escucharte, sin juzgarte y sin presionarte. 💖"];
+let msgIndex=0, tries=Number(localStorage.getItem("tries")||0), breathTimer=null, breathOn=false, audioCtx=null, soundNode=null, soundGain=null, soundOn=false;
+document.getElementById("dailyQuote").textContent=quotes[Math.floor(Math.random()*quotes.length)];
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
+function showTab(id){if(id!=="respira"&&breathOn){clearInterval(breathTimer);breathTimer=null;breathOn=false;document.getElementById("breathBtn").textContent="Empezar / pausar";document.getElementById("breathText").textContent="Pausa. Respira normalmente.";document.getElementById("breathCircle").textContent="Descansa"}document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));const el=document.getElementById(id);if(el)el.classList.remove("hidden");document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));if(id==="diario")renderEntries();window.scrollTo({top:0,behavior:"smooth"})}
+function nextMessage(){msgIndex=(msgIndex+1)%messages.length;document.getElementById("loveMessage").textContent=messages[msgIndex]}
+function saveMessage(){const m=document.getElementById("customMessage").value.trim();if(m){localStorage.setItem("customMessage",m);document.getElementById("savedMessageStatus").textContent="Tu mensajito quedó guardado en este dispositivo 💗";}else{document.getElementById("savedMessageStatus").textContent="Escribe primero tu mensaje.";}}
+const custom=localStorage.getItem("customMessage");if(custom){document.getElementById("customMessage").value=custom;messages.push(custom)}
+function markTry(){tries++;localStorage.setItem("tries",tries);document.getElementById("tryCount").textContent="Pequeños pasos intentados: "+tries;document.getElementById("urgePrompt").textContent="¡Bien hecho por intentarlo! Cada pausa cuenta, sin importar el resultado. 🌿"}
+document.getElementById("tryCount").textContent="Pequeños pasos intentados: "+tries;
+function toggleBreath(){if(breathOn){clearInterval(breathTimer);breathTimer=null;breathOn=false;document.getElementById("breathBtn").textContent="Empezar / pausar";document.getElementById("breathText").textContent="Pausa. Respira normalmente.";document.getElementById("breathCircle").textContent="Descansa";return}breathOn=true;let t=0;const tick=()=>{const phase=t%10;if(phase<4){document.getElementById("breathCircle").innerHTML="Inhala<br>suave";document.getElementById("breathText").textContent="Inhala suavemente…"}else{document.getElementById("breathCircle").innerHTML="Exhala<br>despacio";document.getElementById("breathText").textContent="Exhala despacio, sin forzar…"}t++};tick();breathTimer=setInterval(tick,1000);document.getElementById("breathBtn").textContent="Pausar respiración"}
+function getEntries(){try{return JSON.parse(localStorage.getItem("entries")||"[]")}catch(e){return []}}
+function saveEntry(){const mood=document.getElementById("mood").value,note=document.getElementById("note").value.trim();if(!note){alert("Escribe una pequeña nota antes de guardar.");return}const arr=getEntries();arr.unshift({date:new Date().toLocaleString("es-MX"),mood,note});localStorage.setItem("entries",JSON.stringify(arr.slice(0,50)));document.getElementById("note").value="";renderEntries()}
+function renderEntries(){const el=document.getElementById("entries");const arr=getEntries();el.innerHTML="<h3>Mis entradas</h3>";if(!arr.length){el.innerHTML+='<p class="muted">Aquí aparecerán tus notas guardadas.</p>';return}arr.forEach((e,i)=>{const d=document.createElement("div");d.className="entry";const strong=document.createElement("strong");strong.textContent=e.mood+" · "+e.date;const p=document.createElement("p");p.textContent=e.note;d.append(strong,p);el.append(d)})}
+async function toggleSound(){if(soundOn){if(audioCtx)await audioCtx.close();audioCtx=null;soundOn=false;document.getElementById("soundBtn").textContent="▶ Reproducir sonido";document.getElementById("soundStatus").textContent="Sonido detenido.";return}
+try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();soundGain=audioCtx.createGain();soundGain.gain.value=.025;soundGain.connect(audioCtx.destination);if(document.getElementById("soundType").value==="tone"){soundNode=audioCtx.createOscillator();soundNode.type="sine";soundNode.frequency.value=220;soundNode.connect(soundGain);soundNode.start()}else{const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*2,audioCtx.sampleRate);const data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.25;soundNode=audioCtx.createBufferSource();soundNode.buffer=buffer;soundNode.loop=true;soundNode.connect(soundGain);soundNode.start()}soundOn=true;document.getElementById("soundBtn").textContent="■ Detener sonido";document.getElementById("soundStatus").textContent="Sonido activo. Mantén el volumen a un nivel cómodo."}catch(e){document.getElementById("soundStatus").textContent="Tu navegador no pudo iniciar el sonido. Prueba otra vez."}}
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body></html>
